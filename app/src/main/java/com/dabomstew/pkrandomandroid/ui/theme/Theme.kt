@@ -1,55 +1,51 @@
 package com.dabomstew.pkrandomandroid.ui.theme
 
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 
-private val LightColorScheme = lightColorScheme(
-    primary = PokemonRed,
-    onPrimary = PokemonSurface,
-    primaryContainer = PokemonDarkRed,
-    secondary = PokemonBlue,
-    onSecondary = PokemonSurface,
-    tertiary = PokemonYellow,
-    background = PokemonBackground,
-    surface = PokemonSurface,
-    onSurface = PokemonOnSurface,
-    surfaceVariant = PokemonLightGray,
-)
+// Dark-only theme: the app is designed around the dark navy + red palette.
+// Dynamic color is intentionally disabled to preserve the branded identity.
+private val AppColorScheme = darkColorScheme(
+    primary                = Red,
+    onPrimary              = White,
+    primaryContainer       = RedContainer,
+    onPrimaryContainer     = OnRedContainer,
 
-private val DarkColorScheme = darkColorScheme(
-    primary = PokemonRed,
-    onPrimary = PokemonSurface,
-    primaryContainer = PokemonDarkRed,
-    secondary = PokemonBlue,
-    onSecondary = PokemonSurface,
-    tertiary = PokemonYellow,
+    secondary              = Secondary,
+    onSecondary            = White,
+    secondaryContainer     = SecondaryContainer,
+    onSecondaryContainer   = OnSecondaryContainer,
+
+    tertiary               = Tertiary,
+    onTertiary             = Background,
+    tertiaryContainer      = TertiaryContainer,
+    onTertiaryContainer    = OnTertiaryContainer,
+
+    background             = Background,
+    onBackground           = OnBackground,
+
+    surface                = Surface,
+    onSurface              = OnSurface,
+    surfaceVariant         = SurfaceVariant,
+    onSurfaceVariant       = OnSurfaceVariant,
+    surfaceContainer       = SurfaceContainer,
+    surfaceContainerHigh   = SurfaceVariant,
+
+    outline                = Outline,
+    outlineVariant         = OutlineVariant,
+
+    error                  = Error,
+    onError                = White,
+    errorContainer         = ErrorContainer,
+    onErrorContainer       = OnErrorContainer,
 )
 
 @Composable
-fun PokemonRandomizerTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
+fun PokemonRandomizerTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = AppColorScheme,
+        typography  = Typography,
+        content     = content
     )
 }
