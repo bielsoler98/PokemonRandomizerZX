@@ -32,7 +32,7 @@ An unofficial Android port of [Universal Pokemon Randomizer ZX](https://github.c
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/PokemonRandomizerZX.git
+git clone https://github.com/bielsoler98/PokemonRandomizerZX.git
 cd PokemonRandomizerZX
 
 # Build debug APK
